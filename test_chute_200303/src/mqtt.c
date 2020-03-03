@@ -17,7 +17,7 @@
 /* Variable ------------------------------------------------------------------*/
 MQTT_OPT_s opts =
 {
-	.clientid	= MQTT_CLIENT_ID, 
+//	.clientid	= MQTT_CLIENT_ID, 
 	.host		= MQTT_BROKER_IP, 
 	.port		= MQTT_BROKER_PORT,
 	.qos		= QOS0,
@@ -381,7 +381,7 @@ void MQTT_ResponseAlive(void)
 	uint08 buf[MQTT_BUFSIZE];	
 	size_t len = 0;
 	
-	sprintf(buf, "%s", MOTT_CMD_ALIVE);
+//	sprintf(buf, "%s", MOTT_CMD_ALIVE);
 	len = strlen(buf);
 	
 	MQTT_Packing(buf, len);
@@ -404,7 +404,7 @@ void MQTT_ResponseStatus(uint08* result)
 	size_t len = 0;
 	uint08 i;
 	
-	sprintf(&buf[len], "%s ", MOTT_CMD_STATUS);
+//	sprintf(&buf[len], "%s ", MOTT_CMD_STATUS);
 	len += strlen(buf);
 
 	for(i = 0; i < 8; i ++)
@@ -427,10 +427,9 @@ void MQTT_Packing(uint08* buf, size_t len)
 	memset(&message, 0x00, sizeof(message));
 	memset(topic,	0x00, sizeof(topic));
 
-	sprintf(topic, "%s/%s/%s/%s",	MQTT_HEADER, 
-									MOTT_TOPIC_DATA, 
-									MQTT_LIBRARY_NAME, 
-									MQTT_CONTAIN_NAME);
+//	sprintf(topic, "MUV/%s/%s/%s",	MOTT_TOPIC_DATA, 
+//									MQTT_LIBRARY_NAME, 
+//									MQTT_CONTAIN_NAME);
 
 	message.payload = buf;
 	message.payloadlen = (size_t)len;
